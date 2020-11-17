@@ -37,14 +37,14 @@ async function main() {
     const wait_number_str = $('.info_cell').filter(':contains("待ち人数")').find('.wait_number').text();
     if (wait_number_str) {
       const wait_number = Number(wait_number_str);
+      console.log("待ち人数: " + wait_number);
       if (wait_number <= 3) {
+        console.log("診察室へ向かってください");
         for (let i = 0; i < 10; ++i) {
           console.log("\x07");
           await delay(100);
         }
-        break;
       }
-      console.log("待ち人数: " + wait_number);
     } else {
       const text_danger = $('.text-danger').text();
       throw new Error(text_danger || "HTMLパース失敗");
